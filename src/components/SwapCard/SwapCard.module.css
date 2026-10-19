@@ -1,0 +1,255 @@
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  overflow: hidden;
+  padding: var(--cds-space-5);
+  background: var(--cds-surface);
+  border: 1px solid var(--cds-border);
+  border-radius: var(--cds-radius-2xl);
+  box-shadow: var(--cds-shadow-md);
+  color: var(--cds-ink);
+  font-family: var(--cds-font-sans);
+}
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--cds-gradient-card);
+  pointer-events: none;
+}
+.card > * { position: relative; }
+
+/* ---- Filas de monto ---- */
+.field {
+  background: var(--cds-input-bg);
+  border: 1px solid var(--cds-border);
+  border-radius: var(--cds-radius-lg);
+  padding: var(--cds-space-4);
+  transition: border-color 0.18s ease;
+}
+.field:focus-within { border-color: var(--cds-border-accent); }
+
+.fieldTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--cds-space-3);
+  margin-bottom: var(--cds-space-2);
+}
+
+.label {
+  font-size: var(--cds-text-body-sm);
+  font-weight: 500;
+  color: var(--cds-muted);
+}
+
+.amount {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: var(--cds-ink);
+  font-family: var(--cds-font-sans);
+  font-size: var(--cds-text-h3);
+  font-weight: 700;
+  letter-spacing: var(--cds-tracking-tight);
+  outline: none;
+}
+.amount::placeholder { color: var(--cds-faint); }
+
+.amountStatic {
+  color: var(--cds-ink);
+  font-family: var(--cds-font-sans);
+  font-size: var(--cds-text-h3);
+  font-weight: 700;
+  letter-spacing: var(--cds-tracking-tight);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---- Píldora de moneda ---- */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--cds-space-2);
+  padding: 5px 10px 5px 5px;
+  border: 1px solid var(--cds-border-strong);
+  border-radius: var(--cds-radius-pill);
+  background: var(--cds-surface-2);
+  color: var(--cds-ink);
+  font-family: var(--cds-font-sans);
+  font-size: var(--cds-text-body-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.18s ease;
+}
+.pill:hover { border-color: var(--cds-accent); }
+.pill:focus-visible { outline: none; box-shadow: var(--cds-focus-ring); }
+
+.coin {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* ---- Botón circular de intercambio ---- */
+.swapWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: -18px;
+  margin-bottom: -18px;
+  position: relative;
+  z-index: 2;
+}
+
+.swap {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid var(--cds-surface);
+  border-radius: 50%;
+  background: var(--cds-gradient-accent);
+  color: var(--cds-on-accent);
+  box-shadow: var(--cds-glow-sm);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.swap:hover { transform: rotate(180deg); }
+.swap:active { transform: rotate(180deg) scale(0.94); }
+.swap:focus-visible { outline: none; box-shadow: var(--cds-focus-ring); }
+
+/* ---- Chips de montos rápidos ---- */
+.quicks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cds-space-2);
+  margin: var(--cds-space-4) 0;
+}
+
+.chip {
+  padding: 8px 16px;
+  border: 1px solid var(--cds-border-strong);
+  border-radius: var(--cds-radius-pill);
+  background: transparent;
+  color: var(--cds-muted);
+  font-family: var(--cds-font-sans);
+  font-size: var(--cds-text-body-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.18s ease, color 0.18s ease, background-color 0.18s ease;
+}
+.chip:hover { border-color: var(--cds-accent); color: var(--cds-ink); }
+.chip:focus-visible { outline: none; box-shadow: var(--cds-focus-ring); }
+.chipActive {
+  background: var(--cds-accent-soft);
+  border-color: var(--cds-border-accent);
+  color: var(--cds-ink);
+}
+
+/* ---- Fila "Pagar con" ---- */
+.payMethodLabel {
+  display: block;
+  margin-bottom: var(--cds-space-2);
+  font-size: var(--cds-text-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--cds-faint);
+}
+
+.payMethod {
+  display: flex;
+  align-items: center;
+  gap: var(--cds-space-3);
+  padding: var(--cds-space-3) var(--cds-space-4);
+  margin-bottom: var(--cds-space-4);
+  background: var(--cds-surface-2);
+  border: 1px solid var(--cds-border);
+  border-radius: var(--cds-radius-md);
+}
+
+.pmIcon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--cds-accent-soft);
+  color: var(--cds-accent-hover);
+}
+
+.pmTexts { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.pmName {
+  font-size: var(--cds-text-body-sm);
+  font-weight: 600;
+  color: var(--cds-ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pmFee { font-size: var(--cds-text-caption); color: var(--cds-muted); }
+
+.pmRight { margin-left: auto; display: flex; align-items: center; gap: var(--cds-space-2); flex-shrink: 0; }
+.pmBadge {
+  padding: 3px 8px;
+  border-radius: var(--cds-radius-pill);
+  background: var(--cds-accent);
+  color: var(--cds-on-accent);
+  font-size: var(--cds-text-micro);
+  font-weight: 700;
+}
+.chevronMuted { color: var(--cds-faint); }
+
+/* ---- CTA ---- */
+.cta {
+  width: 100%;
+  padding: 16px;
+  border: 0;
+  border-radius: var(--cds-radius-md);
+  font-family: var(--cds-font-sans);
+  font-size: var(--cds-text-body);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: filter 0.18s ease, transform 0.12s ease, background-color 0.18s ease;
+}
+.cta:active { transform: translateY(1px); }
+.cta:focus-visible { outline: none; box-shadow: var(--cds-focus-ring); }
+
+.ctaPrimary {
+  background: var(--cds-gradient-accent);
+  color: var(--cds-on-accent);
+  box-shadow: var(--cds-glow-sm);
+}
+.ctaPrimary:hover { filter: brightness(1.08); }
+
+.ctaDark { background: var(--cds-cta-dark); color: #ffffff; }
+.ctaDark:hover { background: var(--cds-cta-dark-hover); }
+
+.footnote {
+  margin: var(--cds-space-3) 0 0;
+  text-align: center;
+  font-size: var(--cds-text-caption);
+  line-height: 1.55;
+  color: var(--cds-faint);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .swap { transition: none; }
+  .swap:hover { transform: none; }
+}

@@ -1,0 +1,138 @@
+/* ============================================================
+   CRYPTO DS · Design tokens v1.0
+   Lenguaje visual inspirado en on-ramps crypto modernos
+   (modo oscuro como identidad, violeta vívido, estética
+   redondeada y geométrica, resplandores de neón).
+   Dos temas: "oscuro" (por defecto) y "claro".
+   ========================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root,
+[data-theme='oscuro'] {
+  /* ---- Tipografía ---- */
+  --cds-font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --cds-font-sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --cds-font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  --cds-text-display-xl: 4.5rem;   /* 72 */
+  --cds-text-display: 4rem;        /* 64 */
+  --cds-text-h1: 3.5rem;           /* 56 */
+  --cds-text-h2: 3rem;             /* 48 */
+  --cds-text-h3: 1.75rem;          /* 28 */
+  --cds-text-h4: 1.25rem;          /* 20 */
+  --cds-text-body-lg: 1.125rem;    /* 18 */
+  --cds-text-body: 1rem;           /* 16 */
+  --cds-text-body-sm: 0.875rem;    /* 14 */
+  --cds-text-caption: 0.75rem;     /* 12 */
+  --cds-text-micro: 0.6875rem;     /* 11 */
+
+  --cds-tracking-tight: -0.02em;
+  --cds-tracking-tighter: -0.035em;
+
+  /* ---- Espaciado (base 8) ---- */
+  --cds-space-1: 4px;
+  --cds-space-2: 8px;
+  --cds-space-3: 12px;
+  --cds-space-4: 16px;
+  --cds-space-5: 20px;
+  --cds-space-6: 24px;
+  --cds-space-8: 32px;
+  --cds-space-10: 40px;
+  --cds-space-12: 48px;
+  --cds-space-16: 64px;
+  --cds-space-24: 96px;
+  --cds-space-32: 128px;
+
+  /* ---- Superficies · tema oscuro ---- */
+  --cds-bg: #0a0a0c;
+  --cds-bg-soft: #101014;
+  --cds-surface: #141418;
+  --cds-surface-2: #17171c;
+  --cds-surface-3: #1e1e26;
+  --cds-input-bg: #16161a;
+  --cds-ink: #ffffff;
+  --cds-ink-2: #e4e4e7;
+  --cds-muted: #a1a1aa;
+  --cds-faint: #71717a;
+
+  /* ---- Acento ---- */
+  --cds-accent: #5e17eb;
+  --cds-accent-hover: #6a1ff0;
+  --cds-accent-active: #4f13c9;
+  --cds-accent-deep: #2a0a6b;
+  --cds-accent-mid: #4b12b8;
+  --cds-accent-soft: rgba(94, 23, 235, 0.12);
+  --cds-accent-softer: rgba(94, 23, 235, 0.06);
+  --cds-lavender: #ede9fe;
+  --cds-lavender-ink: #4b12b8;
+  --cds-on-accent: #ffffff;
+
+  /* ---- Bordes ---- */
+  --cds-border: rgba(255, 255, 255, 0.06);
+  --cds-border-strong: #2a2a30;
+  --cds-border-accent: rgba(94, 23, 235, 0.45);
+
+  /* ---- Estados ---- */
+  --cds-success: #22c55e;
+  --cds-warning: #f59e0b;
+  --cds-danger: #ef4444;
+  --cds-info: #3b82f6;
+
+  /* ---- Radios ---- */
+  --cds-radius-xs: 8px;
+  --cds-radius-sm: 12px;
+  --cds-radius-md: 16px;
+  --cds-radius-lg: 20px;
+  --cds-radius-xl: 24px;
+  --cds-radius-2xl: 32px;
+  --cds-radius-pill: 999px;
+
+  /* ---- Sombras y brillos ---- */
+  --cds-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --cds-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --cds-shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.55);
+  --cds-glow-sm: 0 0 24px rgba(94, 23, 235, 0.28);
+  --cds-glow-md: 0 0 48px rgba(94, 23, 235, 0.32);
+  --cds-glow-lg: 0 0 96px rgba(94, 23, 235, 0.35);
+
+  /* ---- Degradados ---- */
+  --cds-gradient-accent: linear-gradient(135deg, #6a1ff0 0%, #5e17eb 45%, #4b12b8 100%);
+  --cds-gradient-card: radial-gradient(120% 140% at 50% 0%, rgba(94, 23, 235, 0.22) 0%, rgba(42, 10, 107, 0.28) 55%, rgba(20, 20, 24, 0) 100%);
+  --cds-gradient-hero: radial-gradient(60% 45% at 50% 100%, rgba(94, 23, 235, 0.35) 0%, rgba(94, 23, 235, 0) 70%);
+
+  /* ---- Foco ---- */
+  --cds-focus-ring: 0 0 0 3px rgba(94, 23, 235, 0.38);
+
+  /* ---- CTA oscuro (widget en tema claro) ---- */
+  --cds-cta-dark: #111111;
+  --cds-cta-dark-hover: #1c1c1e;
+}
+
+[data-theme='claro'] {
+  /* ---- Superficies · tema claro ---- */
+  --cds-bg: #f4f4f5;
+  --cds-bg-soft: #ececee;
+  --cds-surface: #ffffff;
+  --cds-surface-2: #f6f6f7;
+  --cds-surface-3: #ececee;
+  --cds-input-bg: #f6f6f7;
+  --cds-ink: #0a0a0c;
+  --cds-ink-2: #27272a;
+  --cds-muted: #52525b;
+  --cds-faint: #a1a1aa;
+
+  /* ---- Bordes ---- */
+  --cds-border: #e9e9ec;
+  --cds-border-strong: #d4d4d8;
+
+  /* ---- Sombras (claras) ---- */
+  --cds-shadow-sm: 0 1px 2px rgba(10, 10, 12, 0.06);
+  --cds-shadow-md: 0 8px 24px rgba(10, 10, 12, 0.08);
+  --cds-shadow-lg: 0 24px 64px rgba(10, 10, 12, 0.12);
+  --cds-glow-sm: 0 0 24px rgba(94, 23, 235, 0.18);
+  --cds-glow-md: 0 0 48px rgba(94, 23, 235, 0.2);
+  --cds-glow-lg: 0 0 96px rgba(94, 23, 235, 0.22);
+
+  --cds-gradient-card: radial-gradient(120% 140% at 50% 0%, rgba(94, 23, 235, 0.08) 0%, rgba(237, 233, 254, 0.5) 60%, rgba(255, 255, 255, 0) 100%);
+  --cds-gradient-hero: radial-gradient(60% 45% at 50% 100%, rgba(94, 23, 235, 0.16) 0%, rgba(94, 23, 235, 0) 70%);
+}
