@@ -1,7 +1,7 @@
 {
   "name": "crypto-ds",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.12.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -12,6 +12,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "qrcode": "^1.5.4",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
   },
@@ -24,7 +25,8 @@
     "@vitejs/plugin-react": "^6.1.2",
     "oxlint": "^1.88.0",
     "storybook": "^10.6.2",
-    "vite": "^8.3.4"
+    "vite": "^8.3.4",
+    "wrangler": "^4.151.2"
   },
   "description": "Crypto DS · Sistema de diseño inspirado en on-ramps crypto (React + Storybook)"
 }

@@ -73,7 +73,7 @@ export default function App() {
       </header>
 
       <HeroPanel className={styles.hero}>
-        <Badge variant="accent">Sistema de diseño · 36 componentes</Badge>
+        <Badge variant="accent">Sistema de diseño · 94 componentes</Badge>
         <h1 className={styles.heroTitle}>
           El lenguaje visual
           <br />
@@ -81,7 +81,7 @@ export default function App() {
         </h1>
         <p className={styles.heroSub}>
           Modo oscuro como identidad, violeta vívido, geometría redondeada y
-          resplandores de neón. Dos temas, tokens CSS y 36 componentes React
+          resplandores de neón. Dos temas, tokens CSS y 94 componentes React
           listos para comprar crypto.
         </p>
         <div className={styles.heroCtas}>
@@ -93,9 +93,9 @@ export default function App() {
           </Button>
         </div>
         <div className={styles.stats}>
-          <StatCard label="Componentes" value="36" />
+          <StatCard label="Componentes" value="90" />
           <StatCard label="Temas" value="2" />
-          <StatCard label="Grupos" value="4" />
+          <StatCard label="Grupos" value="6" />
         </div>
       </HeroPanel>
 
@@ -117,14 +117,14 @@ export default function App() {
               receiveCurrency={rxCur}
               onPayCurrencyClick={cyclePay}
               onReceiveCurrencyClick={cycleRx}
-              onSwap={cycleRx}
               activeQuick={activeQuick}
               onQuickSelect={(v) => {
                 setPayAmount(String(v));
                 setActiveQuick(v);
               }}
-              paymentMethod={{ name: 'Tarjeta de débito', fee: '1.75% comisión', badge: 'Más popular' }}
-              ctaLabel={`Comprar ${rxCur.code} vía tarjeta`}
+              brandLabel="swapped.com"
+              paymentMethod={{ name: 'Card', fee: '1.75% Comisión', badge: 'Más popular' }}
+              ctaLabel={`Comprar ${rxCur.code} vía Card`}
               footnote="Sin cargos ocultos. Entrega estimada: ~10 minutos."
               onSubmit={() => alert(`Demo: comprarías ${receiveStr} ${rxCur.code} con ${payAmount} ${payCur.code}`)}
             />

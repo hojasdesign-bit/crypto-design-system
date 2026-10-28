@@ -2,7 +2,7 @@
 
 Sistema de diseño en React inspirado en el lenguaje visual de los on-ramps crypto modernos: modo oscuro como identidad, violeta vívido, geometría redondeada y resplandores de neón.
 
-- **36 componentes** en 4 grupos: Núcleo, Formularios, Datos, Superficies y Comercio (on-ramp)
+- **94 componentes** en 6 grupos: Núcleo, Formularios, Datos, Superficies, Comercio (on-ramp) y Contenido
 - **2 temas** (`oscuro` por defecto, `claro`) conmutables vía `data-theme`
 - **Tokens CSS** con prefijo `--cds-*` en `src/tokens.css`
 - **Storybook 10** con documentación automática
@@ -29,7 +29,7 @@ src/
   tokens.css        # --cds-* (colores, radios, sombras, tipos, 2 temas)
   base.css          # reset + tipografía base
   tokens.js         # tokens como objeto JS
-  index.js          # exporta los 36 componentes
+  index.js          # exporta los 94 componentes
   components/
     Button/         # Núcleo
     Card/
@@ -43,10 +43,12 @@ src/
 
 | Grupo | Componentes |
 |---|---|
-| Núcleo | Button, Card |
-| Formularios | Input, AmountField, CurrencySelect, SearchInput, Select, Switch, Checkbox, RadioGroup, Slider |
-| Datos | Badge, Chip, TokenIcon, PriceTag, StepProgress, Skeleton, Alert, EmptyState, Divider, Tooltip, StatCard, Breadcrumb |
-| Superficies | Modal, Drawer, Tabs, Accordion, Pagination |
-| Comercio | SwapCard, PaymentMethodRow, FeeRow, OrderSummary, TestimonialCard, TrustBadge, RiskNotice, HeroPanel |
+| Núcleo | Button, IconButton, Card, Avatar, RatingStars, ProgressBar |
+| Formularios | Input, AmountField, CurrencySelect, SearchInput, Select, Switch, Checkbox, RadioGroup, Slider, OptionRow, Combobox, CascadeField, Textarea, QuantitySelector, SegmentedControl, CopyField, PinInput |
+| Datos | Badge, Chip, TokenIcon, PriceTag, StepProgress, Skeleton, Alert, EmptyState, Divider, Tooltip, StatCard, Breadcrumb, MenuItem, Toast, Countdown, PriceChange, TransactionRow, NotificationItem, ProfileHeader, VerifiedBadge, AssetPair, NetworkChip, OverflowChips, ScoreGauge, ComparisonBar |
+| Superficies | Modal, Drawer, Tabs, Accordion, Pagination, FeatureCard, SectionHeading, CTABanner, Panel, BottomNav, AppBar, Header, DropdownMenu, MenuIntro, MenuCoinButton, MenuCard, MenuBanner, MenuLinkColumn, MenuSocials, PageBackground, Footer |
+| Texto | Heading, Text |
+| Comercio | SwapCard, SwapPair, SwapJoined, PaymentMethodRow, FeeRow, OrderSummary, TestimonialCard, TrustBadge, RiskNotice, HeroPanel, OfferCard, OfferTable, TraderCell, PaymentAccountRow, QRCode, OperationRow, TradeStatusPill, ProductCard, SellerCard, ChatBubble, ChatComposer |
+| Contenido | ArticleCard, Gallery |
 
 Hecho por Adrián Hojas · React 19 + Vite + Storybook 10

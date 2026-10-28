@@ -5,7 +5,7 @@
   padding: var(--cds-space-4);
   background: var(--cds-accent-softer);
   border: 1px solid var(--cds-border-accent);
-  border-radius: var(--cds-radius-sm); /* 12px */
+  border-radius: var(--cds-radius-lg);
   font-family: var(--cds-font-sans);
 }
 

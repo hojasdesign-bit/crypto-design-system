@@ -3,7 +3,7 @@
   align-items: flex-start;
   gap: var(--cds-space-3);
   padding: var(--cds-space-4);
-  border-radius: var(--cds-radius-sm);
+  border-radius: var(--cds-radius-lg);
   border: 1px solid;
   font-family: var(--cds-font-sans);
   font-size: var(--cds-text-body-sm);
