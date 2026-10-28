@@ -13,6 +13,14 @@
   margin-left: calc(var(--ag-size, 36px) * -0.33);
   border: 2px solid var(--cds-bg);
   border-radius: var(--cds-radius-pill);
+  /* Fondo opaco detrás del disco: el fondo del Avatar es
+     --cds-accent-soft, un violeta al 12% (casi transparente), así que
+     sin este respaldo se veía a través de cada disco al avatar de
+     abajo y la pila se leía como anillos entrelazados, sobre todo en
+     la página de docs, donde el lienzo es claro. Con el fondo de
+     página como respaldo, el disco queda opaco y el solape tapa de
+     verdad al anterior, en ambos temas. */
+  background: var(--cds-bg);
 }
 
 .item:first-child {
