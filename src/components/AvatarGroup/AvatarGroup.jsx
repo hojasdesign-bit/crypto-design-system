@@ -21,16 +21,18 @@ export function AvatarGroup({ avatars = [], max = 4, size = 'md', className = ''
     .filter(Boolean);
 
   const renderOne = (item, i) => {
+    // z-index creciente: cada avatar queda POR ENCIMA del anterior,
+    // así la pila se lee como discos apilados y no como anillos enlazados.
     if (React.isValidElement(item)) {
       return (
-        <span key={i} className={styles.item}>
+        <span key={i} className={styles.item} style={{ zIndex: i + 1 }}>
           {item}
         </span>
       );
     }
     const { src, name = '' } = typeof item === 'string' ? { name: item } : item || {};
     return (
-      <span key={i} className={styles.item} title={name || undefined}>
+      <span key={i} className={styles.item} style={{ zIndex: i + 1 }} title={name || undefined}>
         <Avatar src={src} name={name} size={px} />
       </span>
     );
@@ -39,6 +41,7 @@ export function AvatarGroup({ avatars = [], max = 4, size = 'md', className = ''
   return (
     <span
       className={cn(styles.group, className)}
+      style={{ '--ag-size': `${px}px` }}
       role="group"
       aria-label={
         hiddenNames.length > 0
@@ -54,7 +57,7 @@ export function AvatarGroup({ avatars = [], max = 4, size = 'md', className = ''
       {hidden.length > 0 && (
         <span
           className={styles.more}
-          style={{ width: px, height: px, fontSize: Math.round(px * 0.34) }}
+          style={{ width: px, height: px, fontSize: Math.round(px * 0.34), zIndex: visible.length + 1 }}
           title={hiddenNames.length > 0 ? hiddenNames.join(', ') : undefined}
           aria-label={`y ${hidden.length} más${hiddenNames.length > 0 ? `: ${hiddenNames.join(', ')}` : ''}`}
         >
