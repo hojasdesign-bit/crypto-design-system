@@ -6,6 +6,9 @@ export { Button } from './components/Button/Button.jsx';
 export { Card } from './components/Card/Card.jsx';
 export { Avatar } from './components/Avatar/Avatar.jsx';
 export { AvatarGroup } from './components/AvatarGroup/AvatarGroup.jsx';
+export { Stack } from './components/Stack/Stack.jsx';
+export { Grid } from './components/Grid/Grid.jsx';
+export { Link } from './components/Link/Link.jsx';
 export { RatingStars } from './components/RatingStars/RatingStars.jsx';
 export { ProgressBar } from './components/ProgressBar/ProgressBar.jsx';
 
@@ -28,6 +31,8 @@ export { Slider } from './components/Slider/Slider.jsx';
 export { Calendar } from './components/Calendar/Calendar.jsx';
 export { FileInput } from './components/FileInput/FileInput.jsx';
 export { Field } from './components/Field/Field.jsx';
+export { Tokenizer } from './components/Tokenizer/Tokenizer.jsx';
+export { PowerSearch } from './components/PowerSearch/PowerSearch.jsx';
 
 // ---- Datos ----
 export { Badge } from './components/Badge/Badge.jsx';
@@ -40,6 +45,7 @@ export { StatusDot } from './components/StatusDot/StatusDot.jsx';
 export { Spinner } from './components/Spinner/Spinner.jsx';
 export { MetadataList } from './components/MetadataList/MetadataList.jsx';
 export { Alert } from './components/Alert/Alert.jsx';
+export { Banner } from './components/Banner/Banner.jsx';
 export { EmptyState } from './components/EmptyState/EmptyState.jsx';
 export { Divider } from './components/Divider/Divider.jsx';
 export { Tooltip } from './components/Tooltip/Tooltip.jsx';
@@ -64,6 +70,9 @@ export { Pagination } from './components/Pagination/Pagination.jsx';
 export { Panel } from './components/Panel/Panel.jsx';
 export { BottomNav } from './components/BottomNav/BottomNav.jsx';
 export { AppBar } from './components/AppBar/AppBar.jsx';
+export { HoverCard } from './components/HoverCard/HoverCard.jsx';
+export { Popover } from './components/Popover/Popover.jsx';
+export { SideNav } from './components/SideNav/SideNav.jsx';
 
 // ---- Comercio (on-ramp) ----
 export { SwapCard } from './components/SwapCard/SwapCard.jsx';

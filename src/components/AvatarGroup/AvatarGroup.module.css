@@ -33,6 +33,12 @@
   align-items: center;
   justify-content: center;
   margin-left: calc(var(--ag-size, 36px) * -0.33);
+  /* El contador debe medir lo mismo que los avatares: el avatar mide
+     `px` + su anillo de 2px (40px en md), pero con el border-box
+     global el width del contador INCLUÍA el anillo y quedaba en 36px,
+     4px más pequeño. Con content-box, el width es el círculo y el
+     anillo se suma fuera, igual que en .item. */
+  box-sizing: content-box;
   border: 2px solid var(--cds-bg);
   border-radius: var(--cds-radius-pill);
   background: var(--cds-surface-3);
