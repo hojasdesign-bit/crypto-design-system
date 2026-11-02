@@ -15,11 +15,11 @@
   align-items: center;
   gap: var(--cds-space-2);
   width: 100%;
-  min-height: 44px;
+  min-height: 50px;
   padding: 10px 14px;
   background: var(--cds-input-bg);
   border: 1px solid var(--cds-border);
-  border-radius: var(--cds-radius-md);
+  border-radius: var(--cds-radius-lg);
   color: var(--cds-ink);
   font-family: var(--cds-font-sans);
   font-size: var(--cds-text-body-sm);
@@ -29,7 +29,7 @@
   transition: border-color 0.15s ease;
 }
 .trigger:hover:not(:disabled) { border-color: var(--cds-border-strong); }
-.trigger:focus-visible { outline: none; box-shadow: var(--cds-focus-ring); }
+.trigger:focus-visible { outline: none; border-color: var(--cds-accent); box-shadow: var(--cds-focus-ring); }
 .trigger:disabled { opacity: 0.5; cursor: not-allowed; }
 .trigger.open { border-color: var(--cds-accent); }
 .trigger.hasError { border-color: var(--cds-danger); }
