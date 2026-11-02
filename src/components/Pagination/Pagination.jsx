@@ -4,9 +4,12 @@ import { cn } from '../../utils.js';
 
 /**
  * Pagination — anterior/siguiente más números de página con elipsis.
- * Colapsa los rangos intermedios cuando hay muchas páginas.
+ * Colapsa los rangos intermedios cuando hay muchas páginas. Dos formas:
+ * `pill` (números sueltos, el seleccionado en cuadrado redondeado),
+ * `rounded` (botones cuadrados con bordes redondeados y borde visible)
+ * y `soft` (los mismos cuadrados con fondo suave, pero sin borde).
  */
-export function Pagination({ page = 1, totalPages = 1, onChange, className = '', ...rest }) {
+export function Pagination({ page = 1, totalPages = 1, onChange, shape = 'pill', className = '', ...rest }) {
   const go = (next) => {
     if (next >= 1 && next <= totalPages && next !== page) onChange?.(next);
   };
@@ -14,7 +17,7 @@ export function Pagination({ page = 1, totalPages = 1, onChange, className = '',
   const items = buildItems(page, totalPages);
 
   return (
-    <nav className={cn(styles.pagination, className)} aria-label="Paginación" {...rest}>
+    <nav className={cn(styles.pagination, shape === 'rounded' && styles.rounded, shape === 'soft' && styles.soft, className)} aria-label="Paginación" {...rest}>
       <button
         type="button"
         className={styles.pageBtn}

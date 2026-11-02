@@ -1,0 +1,32 @@
+.root {
+  --g-ink: #ffffff;
+  --g-muted: #c5c5c5;
+  --g-letter-border: #202020;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--cds-font-sans);
+}
+.btn {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 8px;
+  border: 1px solid var(--g-letter-border);
+  background: transparent;
+  color: var(--g-muted);
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.btn:first-child { width: auto; padding: 0 8px; }
+.btn.active { border-color: var(--g-ink); color: var(--g-ink); }
+.btn:disabled { opacity: 0.4; cursor: default; }
+
+:global([data-theme="claro"]) .root {
+  --g-ink: #101010;
+  --g-muted: #5c5c66;
+  --g-letter-border: #dcdce0;
+}

@@ -19,82 +19,89 @@ const EyeIcon = (
 );
 
 /**
- * OfferTable — la tabla DENSA de ofertas del mercado P2P (la vista de
- * escritorio de Peetoo): par Das/Recibes, disponible y límites, precio,
- * métodos y redes con desborde +N, anunciante y acción. OfferCard sigue
- * siendo la vista de tarjeta/móvil; esta es su contraparte en tabla.
+ * OfferTable — la tabla de ofertas del mercado P2P, como la de peetoo:
+ * par Das/Recibes (solo círculos), disponible y límites, precio con el
+ * badge del método de pago (una oferta lleva UN solo método), redes con
+ * desborde +N, anunciante y acción. En móvil cada fila pasa a ser una
+ * tarjeta (par/anunciante, montos, redes, precio/acción).
  * Con `own` en una oferta, la acción pasa a ser pausar/reanudar y ver
  * (la vista de «Mis ofertas»).
  * Oferta: { id, give, receive, reverse, available, limits, price,
- * priceNote, methods[], networks[{name,symbol,color}], trader, ctaLabel,
- * own, paused }
+ * priceTitle, priceNote, method, methodLabel, networks[{name,symbol,
+ * color}], trader, ctaLabel, own, paused }
+ * `priceTitle` es el valor exacto que se muestra al pasar el cursor
+ * cuando `price` viene abreviado (p. ej. «1,04k»); `methodLabel` es la
+ * etiqueta corta del badge (p. ej. «Cash» o «Bank») y `method` el nombre
+ * completo que aparece al pasar el cursor sobre el badge.
  */
 export function OfferTable({ offers = [], onAction, onTogglePause, onView, className = '', ...rest }) {
   return (
     <div className={cn(styles.wrap, className)} {...rest}>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th scope="col">Das / Recibes</th>
-            <th scope="col">Disponible / Límites</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Métodos de pago</th>
-            <th scope="col">Red blockchain</th>
-            <th scope="col">Anunciante</th>
-            <th scope="col"><span className={styles.srOnly}>Acciones</span></th>
-          </tr>
-        </thead>
-        <tbody>
-          {offers.map((o, i) => (
-            <tr key={o.id ?? i} className={cn(o.paused && styles.paused)}>
-              <td>
-                <AssetPair from={o.give} to={o.receive} reverse={o.reverse} size={40} />
-              </td>
-              <td>
-                <div className={styles.amount}>{o.available}</div>
-                {o.limits && <div className={styles.sub}>{o.limits}</div>}
-              </td>
-              <td>
-                <div className={styles.price}>{o.price}</div>
-                {o.priceNote && <div className={styles.sub}>{o.priceNote}</div>}
-              </td>
-              <td>
-                <OverflowChips items={o.methods || []} maxVisible={2} />
-              </td>
-              <td>
-                {o.networks?.length ? (
-                  <OverflowChips
-                    items={o.networks}
-                    maxVisible={2}
-                    renderItem={(n) => <NetworkChip name={n.name} symbol={n.symbol} color={n.color} />}
-                  />
-                ) : (
-                  <span className={styles.sub}>—</span>
-                )}
-              </td>
-              <td>
-                <TraderCell trader={o.trader} />
-              </td>
-              <td className={styles.actions}>
-                {o.own ? (
-                  <span className={styles.ownActions}>
-                    <IconButton label={o.paused ? 'Reanudar oferta' : 'Pausar oferta'} size="lg" onClick={() => onTogglePause?.(o)}>
-                      {o.paused ? PlayIcon : PauseIcon}
-                    </IconButton>
-                    <IconButton label="Ver detalles" size="lg" onClick={() => onView?.(o)}>
-                      {EyeIcon}
-                    </IconButton>
+      <div className={styles.list} role="table" aria-label="Ofertas del mercado">
+        <div className={styles.head} role="row">
+          <div className={styles.cell} role="columnheader">Das / Recibes</div>
+          <div className={styles.cell} role="columnheader">Disponible / Min - Max</div>
+          <div className={styles.cell} role="columnheader">Precio</div>
+          <div className={styles.cell} role="columnheader">Red blockchain</div>
+          <div className={styles.cell} role="columnheader">Anunciante</div>
+          <div className={styles.cell} role="columnheader"><span className={styles.srOnly}>Acciones</span></div>
+        </div>
+        {offers.map((o, i) => (
+          <div key={o.id ?? i} className={cn(styles.row, o.paused && styles.paused)} role="row">
+            <div className={cn(styles.cell, styles.pair)} role="cell">
+              <AssetPair from={o.give} to={o.receive} reverse={o.reverse} size={44} />
+            </div>
+            <div className={cn(styles.cell, styles.amounts)} role="cell">
+              <div className={styles.amount}>{o.available}</div>
+              {o.limits && <div className={styles.sub}>{o.limits}</div>}
+            </div>
+            <div className={cn(styles.cell, styles.priceCell)} role="cell">
+              <div className={styles.price}>
+                <span className={styles.priceValue} title={o.priceTitle}>{o.price}</span>{' '}
+                {(o.methodLabel || o.method) && (
+                  <span
+                    className={styles.methodBadge}
+                    title={o.methodLabel && o.method && o.method !== o.methodLabel ? o.method : undefined}
+                  >
+                    {o.methodLabel || o.method}
                   </span>
-                ) : (
-                  <Button size="md" onClick={() => onAction?.(o)}>
-                    {o.ctaLabel || 'Comprar'}
-                  </Button>
                 )}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+              </div>
+              {o.priceNote && <div className={styles.sub}>{o.priceNote}</div>}
+            </div>
+            <div className={cn(styles.cell, styles.chains)} role="cell">
+              {o.networks?.length ? (
+                <OverflowChips
+                  items={o.networks}
+                  maxVisible={2}
+                  renderItem={(n) => <NetworkChip name={n.name} symbol={n.symbol} color={n.color} />}
+                />
+              ) : (
+                <span className={styles.sub}>—</span>
+              )}
+            </div>
+            <div className={cn(styles.cell, styles.trader)} role="cell">
+              <TraderCell trader={o.trader} />
+            </div>
+            <div className={cn(styles.cell, styles.actions)} role="cell">
+              {o.own ? (
+                <span className={styles.ownActions}>
+                  <IconButton label={o.paused ? 'Reanudar oferta' : 'Pausar oferta'} size="lg" onClick={() => onTogglePause?.(o)}>
+                    {o.paused ? PlayIcon : PauseIcon}
+                  </IconButton>
+                  <IconButton label="Ver detalles" size="lg" onClick={() => onView?.(o)}>
+                    {EyeIcon}
+                  </IconButton>
+                </span>
+              ) : (
+                <Button size="md" onClick={() => onAction?.(o)}>
+                  {o.ctaLabel || 'Comprar'}
+                </Button>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
       {offers.length === 0 && <p className={styles.empty}>No hay ofertas que coincidan con los filtros.</p>}
     </div>
   );

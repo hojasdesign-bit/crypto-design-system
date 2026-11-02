@@ -7,29 +7,62 @@
   font-family: var(--cds-font-sans);
   color: var(--cds-ink);
 }
-.table { width: 100%; min-width: 940px; border-collapse: collapse; }
-.table th {
-  padding: 14px 16px;
-  text-align: left;
-  font-size: var(--cds-text-micro);
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--cds-faint);
+.list { width: 100%; min-width: 900px; border-collapse: collapse; font-size: 14px; display: table; }
+.head { display: table-header-group; }
+.row { display: table-row; }
+.cell { display: table-cell; vertical-align: top; padding: 20px 12px; border-top: 1px solid var(--cds-border); }
+.head .cell {
+  border-top: none; text-align: left; font-size: 12px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--cds-muted); padding: 12px; white-space: nowrap;
+}
+.cell:first-child { padding-left: 24px; }
+.cell:last-child { padding-right: 24px; }
+.actions { text-align: right; white-space: nowrap; }
+.ownActions { display: inline-flex; gap: 2px; }
+.paused { opacity: 0.55; }
+
+/* Badge del método: tamaño compacto también en escritorio, tras el valor. */
+.methodBadge {
+  display: inline-block; vertical-align: middle;
+  font-size: 10px; font-weight: 600; line-height: 1;
+  padding: 4px 6px; border-radius: 6px;
+  border: 1px solid var(--cds-border-strong); color: var(--cds-ink);
   white-space: nowrap;
 }
-.table td {
-  padding: 16px;
-  border-top: 1px solid var(--cds-border);
-  vertical-align: middle;
-}
-.table tbody tr { transition: background-color 0.15s ease; }
-.table tbody tr:hover { background: var(--cds-accent-softer); }
-.paused { opacity: 0.55; }
-.amount { font-size: var(--cds-text-body); font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.price { font-size: var(--cds-text-body-lg); font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.amount { font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+.price { font-size: 14px; font-weight: 600; }
 .sub { margin-top: 2px; font-size: var(--cds-text-caption); color: var(--cds-muted); white-space: nowrap; }
-.actions { text-align: right; }
-.ownActions { display: inline-flex; gap: 2px; }
 .empty { padding: 40px 16px; text-align: center; color: var(--cds-muted); font-size: var(--cds-text-body-sm); }
 .srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Móvil (≤768px): cada fila es una tarjeta en rejilla. */
+@media (max-width: 768px) {
+  .wrap { overflow-x: visible; }
+  .list { display: block; min-width: 0; }
+  .head { display: none; }
+  .row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "pair trader"
+      "amounts amounts"
+      "chains chains"
+      "price actions";
+    gap: 12px;
+    align-items: start;
+    padding: 16px 24px;
+    border-top: 1px solid var(--cds-border);
+  }
+  .row:first-child { border-top: none; }
+  .cell { display: block; padding: 0; border-top: none; }
+  .cell:first-child, .cell:last-child { padding-left: 0; padding-right: 0; }
+  .pair { grid-area: pair; }
+  .amounts { grid-area: amounts; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 14px; }
+  .priceCell { grid-area: price; text-align: left; }
+  .priceCell .price { display: inline-block; position: relative; font-size: 16px; font-weight: 600; }
+  .priceCell .price .methodBadge { position: absolute; left: 100%; top: 50%; transform: translateY(-50%); margin-left: 6px; }
+  .chains { grid-area: chains; }
+  .trader { grid-area: trader; }
+  .actions { grid-area: actions; text-align: right; white-space: nowrap; align-self: center; }
+}

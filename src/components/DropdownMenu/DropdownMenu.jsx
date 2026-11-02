@@ -26,7 +26,7 @@ export function DropdownMenu({ dropdown = {}, mobile = false, open = true, onNav
         {coins && (
           <div className={styles.coins}>
             {coins.map((coin) => (
-              <MenuCoinButton key={coin.code} {...coin} onClick={onNavigate} />
+              <MenuCoinButton key={coin.code || coin.label} {...coin} onClick={onNavigate} />
             ))}
           </div>
         )}
@@ -41,7 +41,7 @@ export function DropdownMenu({ dropdown = {}, mobile = false, open = true, onNav
           </div>
         )}
         {primaryLinks && <MenuLinkColumn links={primaryLinks} mobile={mobile} onNavigate={onNavigate} />}
-        {(links || socials) && <MenuLinkColumn links={links || []} socials={socials} mobile={mobile} onNavigate={onNavigate} />}
+        {(links?.length || socials) && <MenuLinkColumn links={links || []} socials={socials} mobile={mobile} onNavigate={onNavigate} />}
       </div>
     </div>
   );

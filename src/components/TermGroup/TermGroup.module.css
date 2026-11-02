@@ -1,0 +1,24 @@
+.group {
+  --g-border: rgba(255, 255, 255, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-top: 1px solid var(--g-border);
+  padding-top: 41px;
+  font-family: var(--cds-font-sans);
+  color: #ffffff;
+}
+.group:first-child { border-top: 0; padding-top: 0; }
+.letter { margin: 0; font-size: 24px; line-height: 32px; font-weight: 500; }
+.cards { display: flex; flex-direction: column; gap: 20px; width: 100%; }
+
+:global([data-theme="claro"]) .group {
+  --g-border: rgba(16, 16, 16, 0.12);
+  color: #101010;
+}
+
+@media (min-width: 1024px) {
+  .group { flex-direction: row; gap: 0; }
+  .letter { width: 88px; flex-shrink: 0; margin: 16px 0 0 70px; }
+  .cards { width: 678px; }
+}

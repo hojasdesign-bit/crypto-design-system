@@ -1,0 +1,30 @@
+.card {
+  width: 330px;
+  max-width: 100%;
+  height: 60px;
+  background: #181818;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-sizing: border-box;
+  font-family: var(--cds-font-sans);
+}
+.disc {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+}
+.logo { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
+.name { font-size: 16px; font-weight: 500; color: #ffffff; }
+
+:global([data-theme="claro"]) .card { background: #ffffff; border: 1px solid var(--cds-border); }
+:global([data-theme="claro"]) .name { color: #101010; }
