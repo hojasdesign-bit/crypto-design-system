@@ -15,6 +15,9 @@
 
 .seg {
   flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   height: 42px;
   padding: 0 var(--cds-space-4);
   background: transparent;
@@ -30,6 +33,12 @@
 }
 
 .seg:hover { color: var(--cds-ink); }
+
+/* Variante compacta (36px): cuadrada con bordes redondeados, como el
+   default (contenedor 16, segmentos 12). La usan el interruptor
+   Crypto/Divisa y el selector de tema de peetoo. */
+.small { padding: 3px; border-radius: var(--cds-radius-lg); }
+.small .seg { height: 30px; padding: 0 12px; font-size: var(--cds-text-body-sm); border-radius: var(--cds-radius-tile); }
 .seg:focus-visible { outline: none; box-shadow: var(--cds-focus-ring); }
 
 .active {
